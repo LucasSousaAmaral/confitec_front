@@ -1,0 +1,54 @@
+<div class="main_content">
+    <table mat-table [dataSource]="users" class="mat-elevation-z8">    
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef> User Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef> User Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="surName">
+      <th mat-header-cell *matHeaderCellDef> Sur Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.surName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.birthDate | date}}  </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="scholarity">
+      <th mat-header-cell *matHeaderCellDef> Scholarity </th>
+      <td mat-cell *matCellDef="let element"> {{element.scholarityName}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button mat-icon-button color="warn" aria-label="Delete user" (click)="deleteUser(element.userId)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" aria-label="Update user" (click)="openUpdateDialog(element)">
+          <mat-icon>update</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+  </table>  
+</div>
+<div class="main_content">
+  <button mat-fab color="primary" aria-label="Create user" (click)="openCreateDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
