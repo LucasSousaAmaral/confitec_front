@@ -19,7 +19,7 @@ import { UpdateUserDialogComponent } from './components/update-user-dialog/updat
     AppComponent,
     UsersComponent,
     CreateUserDialogComponent,
-    UpdateUserDialogComponent
+    UpdateUserDialogComponent,
   ],
   imports: [
     BrowserModule,

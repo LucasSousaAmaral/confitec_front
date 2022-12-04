@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserModel } from './users.model';
 import { CreateUserDialogComponent } from '../create-user-dialog/create-user-dialog.component';
 import { UpdateUserDialogComponent } from '../update-user-dialog/update-user-dialog.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-users',
@@ -35,7 +36,20 @@ export class UsersComponent implements OnInit {
           console.log(users);
         }, error => 
         {
-          console.log('Getting users failed.', error)
+          let errors:string = '';
+          
+          for(let i = 0; i < error.ValidationFailures.length; i++)
+          {
+            errors += error.ValidationFailures[i].ErrorMessage + '\n'
+          }
+          
+          Swal.fire({
+            title: error.Message,
+            timer: 2000,
+            text: errors,
+            icon: 'error',
+            confirmButtonText: 'Try again'
+          })
         });
   }
 
@@ -44,7 +58,23 @@ export class UsersComponent implements OnInit {
       this.usersService.deleteUser(userId).subscribe(user => 
         {
           this.listUsers();
-        }, error => {console.log('Deleting user failed', error)})
+        }, error => 
+        {
+          let errors:string = '';
+          
+          for(let i = 0; i < error.ValidationFailures.length; i++)
+          {
+            errors += error.ValidationFailures[i].ErrorMessage + '\n'
+          }
+
+          Swal.fire({
+            title: error.Message,
+            timer: 2000,
+            text: errors,
+            icon: 'error',
+            confirmButtonText: 'Try again'
+          })
+        });
   }
 
   openUpdateDialog(updateUser:any): void {
