@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Create User</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>User Name</mat-label>
+    <input matInput [(ngModel)]='user.userName'>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Sur Name</mat-label>
+    <input matInput [(ngModel)]='user.surName'>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" [(ngModel)]='user.email'>
+  </mat-form-field >
+  <mat-form-field appearance="fill">
+    <mat-label>Birth Date</mat-label>
+    <input matInput type="date" [(ngModel)]='user.birthDate'>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Scholarity</mat-label>
+    <mat-select [(ngModel)]='user.scholarity'>
+      <mat-option [value]='1'> Infantil </mat-option>
+      <mat-option [value]='2'> Fundamental </mat-option>
+      <mat-option [value]='3'> Médio </mat-option>
+      <mat-option [value]='4'> Superior </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="addUser()">Create</button>
+</div>

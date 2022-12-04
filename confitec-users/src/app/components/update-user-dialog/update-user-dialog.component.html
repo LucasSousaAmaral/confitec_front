@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Update User | {{data.userName}}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>User Name</mat-label>
+    <input matInput [value] = 'data.userName' [(ngModel)]= 'data.userName'>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Sur Name</mat-label>
+    <input matInput [value] = 'data.surName' [(ngModel)]= 'data.surName'>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput [value] = 'data.email' [(ngModel)]= 'data.email'>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Birth Date</mat-label>
+    <input matInput [value] = 'data.birthDate | date' [(ngModel)]= 'data.birthDate'>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Scholarity</mat-label>
+    <mat-select [value] = 'data.scholarity' [(ngModel)]= 'data.scholarity'>
+      <mat-option [value]='1'> Infantil </mat-option>
+      <mat-option [value]='2'> Fundamental </mat-option>
+      <mat-option [value]='3'> Médio </mat-option>
+      <mat-option [value]='4'> Superior </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="updateUser(data)">Update</button>
+</div>
